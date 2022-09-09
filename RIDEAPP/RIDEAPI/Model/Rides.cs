@@ -3,6 +3,7 @@ using MongoDB.Bson;
 
 namespace RIDEAPI.Model
 {
+    [BsonIgnoreExtraElements]
     public class Rides
     {
         [BsonId]

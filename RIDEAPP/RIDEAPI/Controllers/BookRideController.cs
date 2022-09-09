@@ -5,7 +5,7 @@ using RIDEAPI.Services;
 
 namespace RIDEAPI.Controllers
 {
-    [Route("api/v1.0/ rideapp /<username>/[controller]")]
+    [Route("api/v1.0/rideapp/<username>/[controller]")]
     [ApiController]
     public class bookrideController : ControllerBase
     {

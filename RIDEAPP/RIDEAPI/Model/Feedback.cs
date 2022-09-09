@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace RIDEAPI.Model
 {
+    [BsonIgnoreExtraElements]
     public class Feedback
     {
         [BsonId]

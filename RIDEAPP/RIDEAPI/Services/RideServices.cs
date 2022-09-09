@@ -17,13 +17,17 @@ namespace RIDEAPI.Services
             
             ridecollection = foodb.GetCollection<Rides>(dbSettings.Value.CollectionName);
             logincollection = foodb.GetCollection<Login>(dbSettings.Value.CollectionName);
-            bookcollection = foodb.GetCollection<Book>(dbSettings.Value.CollectionName1);
-            feedcollection = foodb.GetCollection<Feedback>(dbSettings.Value.CollectionName2);
+            bookcollection = foodb.GetCollection<Book>(dbSettings.Value.CollectionName);
+            feedcollection = foodb.GetCollection<Feedback>(dbSettings.Value.CollectionName);
         }
 
         //public async Task<List<Foods>> GetAsync()
         //    => await foodcollection.Find(_ => true).ToListAsync();
-      
+
+        public async Task<List<Feedback>> GettheFeedback()
+        {
+            return await feedcollection.Find(_ => true).ToListAsync();
+        }
         public async Task<List<Rides>> GettheRide()
         {
             return await ridecollection.Find(_ => true).ToListAsync();
@@ -36,6 +40,10 @@ namespace RIDEAPI.Services
         public async Task<Feedback> GetById1(string id)
         {
             return await feedcollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        }
+        public async Task<Login> GetByEmail(string email)
+        {
+            return await logincollection.Find(x => x.Email == email).FirstOrDefaultAsync();
         }
         public async Task<Rides> GetById(string id)
         {
@@ -58,10 +66,7 @@ namespace RIDEAPI.Services
         {
             await ridecollection.DeleteOneAsync(x => x.Id == id);
         }
-        public async Task<List<Feedback>> GettheFeedback()
-        {
-            return await feedcollection.Find(_ => true).ToListAsync();
-        }
+       
 
         public async Task InsertFeedbackDetails(Feedback feedback)
         {
